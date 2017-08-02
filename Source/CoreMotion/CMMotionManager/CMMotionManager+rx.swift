@@ -13,7 +13,7 @@ import RxCocoa
 fileprivate var accelerationKey: UInt8 = 0
 
 extension Reactive where Base: CMMotionManager {
-    var acceleration: Observable<CMAcceleration>? {
+    public var acceleration: Observable<CMAcceleration>? {
 
         /// The accelerometer could be unavailable in some cases
         if !self.base.isAccelerometerAvailable {

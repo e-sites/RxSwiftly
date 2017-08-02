@@ -40,7 +40,7 @@ extension Reactive {
     ///   - key: The `UnsafeRawPointer` to store the memoized outcome in.
     ///   - lazyCreateClosure: The closure which creates the object
     /// - Returns: The object itself
-    public func _memoize<T>(key: UnsafeRawPointer, lazyCreateClosure: () -> Observable<T>) -> Observable<T> {
+    public func memoize<T>(key: UnsafeRawPointer, lazyCreateClosure: () -> Observable<T>) -> Observable<T> {
         return _memoize(self.base, key: key, lazyCreateClosure: lazyCreateClosure)
     }
 }
