@@ -1,6 +1,6 @@
 //
 //  Memoization.swift
-//  iBandPlus
+//  RxSwiftly
 //
 //  Created by Bas van Kuijck on 28/07/2017.
 //  Copyright © 2017 E-sites. All rights reserved.
@@ -47,11 +47,12 @@ extension Reactive {
 
 fileprivate func _memoize<T>(_ object: Any, key: UnsafeRawPointer, lazyCreateClosure: () -> T) -> T {
     objc_sync_enter(object); defer { objc_sync_exit(object) }
-    if let object = objc_getAssociatedObject(object, key) as? T {
-        return object
+    if let instance = objc_getAssociatedObject(object, key) as? T {
+        return instance
     }
 
-    let object = lazyCreateClosure()
-    objc_setAssociatedObject(object, key, object, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    return object
+    let instance = lazyCreateClosure()
+    objc_setAssociatedObject(object, key, instance, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    return instance
 }
+
