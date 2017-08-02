@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
     ss.subspec 'UIApplication' do |sss|
       sss.source_files   = "Source/UIKit/UIApplication/*.{h,swift}"
     end
-    s.dependency "#{s.name}/Core"
+    ss.dependency "#{s.name}/Core"
   end
 
   s.subspec 'CoreMotion' do |ss|
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
     ss.subspec 'CMMotionManager' do |sss|
       sss.source_files   = "Source/CoreMotion/CMMotionManager/*.{h,swift}"
     end
-    s.dependency "#{s.name}/Core"
+    ss.dependency "#{s.name}/Core"
   end
 
   s.default_subspecs = "#{s.name}/Core"
