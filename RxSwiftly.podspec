@@ -27,5 +27,5 @@ Pod::Spec.new do |s|
     end
   end
 
-  s.default_subspecs = 'UIKit,CoreMotion'
+  s.default_subspecs = 'UIKit', 'CoreMotion'
 end
