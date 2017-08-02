@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license        = { :type => "MIT", :file => "LICENSE" }
   s.homepage       = "https://github.com/e-sites/#{s.name}"
   s.source         = { :git => "https://github.com/e-sites/#{s.name}.git", :tag => s.version.to_s }
-  s.source_files   = 'Source/*.h', 'Source/Core/*.swift'
+  s.source_files   = 'Source/*.h'
   s.requires_arc   = true
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
@@ -33,5 +33,5 @@ Pod::Spec.new do |s|
     ss.dependency "#{s.name}/Core"
   end
 
-  s.default_subspecs = 'Core'
+  s.default_subspecs = 'Core', 'UIKit', 'CoreMotion'
 end
