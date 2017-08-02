@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.frameworks    = 'Foundation', 'UIKit'
 
   s.subspec 'Core' do |ss|
-    # ss.source_files = 'Source/Core/*.swift'
+    ss.source_files = 'Source/Core/*.swift'
   end
 
   s.subspec 'UIKit' do |ss|
@@ -33,5 +33,5 @@ Pod::Spec.new do |s|
     ss.dependency "#{s.name}/Core"
   end
 
-  s.default_subspecs = "#{s.name}/Core"
+  s.default_subspecs = 'Core'
 end
