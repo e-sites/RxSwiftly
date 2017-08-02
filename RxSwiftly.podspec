@@ -8,24 +8,30 @@ Pod::Spec.new do |s|
   s.license        = { :type => "MIT", :file => "LICENSE" }
   s.homepage       = "https://github.com/e-sites/#{s.name}"
   s.source         = { :git => "https://github.com/e-sites/#{s.name}.git", :tag => s.version.to_s }
-  s.source_files   = "Source/*.h', 'Source/Core/*.swift"
+  s.source_files   = 'Source/*.h', 'Source/Core/*.swift'
   s.requires_arc   = true
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
   s.frameworks    = 'Foundation', 'UIKit'
 
+  s.subspec 'Core' do |ss|
+    # ss.source_files = 'Source/Core/*.swift'
+  end
+
   s.subspec 'UIKit' do |ss|
     ss.subspec 'UIApplication' do |sss|
       sss.source_files   = "Source/UIKit/UIApplication/*.{h,swift}"
     end
+    s.dependency 'Core'
   end
 
   s.subspec 'CoreMotion' do |ss|
     ss.frameworks    = 'CoreMotion'
     ss.subspec 'CMMotionManager' do |sss|
-      sss.source_files   = "Source/CoreMotion/RxCMMotionManager/*.{h,swift}"
+      sss.source_files   = "Source/CoreMotion/CMMotionManager/*.{h,swift}"
     end
+    s.dependency 'Core'
   end
 
-  s.default_subspecs = 'UIKit', 'CoreMotion'
+  s.default_subspecs = 'Core'
 end
