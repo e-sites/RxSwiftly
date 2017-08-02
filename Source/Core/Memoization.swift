@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-public protocol Memozation: class { }
-extension NSObject: Memozation { }
+public protocol Memoization: class { }
+extension NSObject: Memoization { }
 
-extension Memozation {
+extension Memoization {
     /// Memoizes the the `lazyCreateClosure`
     ///
     /// [Read this](https://nl.wikipedia.org/wiki/Memoization) for more information about memoization:
@@ -23,17 +25,33 @@ extension Memozation {
     ///   - lazyCreateClosure: The closure which creates the object
     /// - Returns: The object itself
     public func memoize<T>(key: UnsafeRawPointer, lazyCreateClosure: () -> T) -> T {
-        return memoize(self, key: key, lazyCreateClosure: lazyCreateClosure)
+        return _memoize(self, key: key, lazyCreateClosure: lazyCreateClosure)
     }
 }
 
-public func memoize<T>(_ obj: Any, key: UnsafeRawPointer, lazyCreateClosure: () -> T) -> T {
-    objc_sync_enter(obj); defer { objc_sync_exit(obj) }
-    if let object = objc_getAssociatedObject(obj, key) as? T {
+extension Reactive {
+    /// Memoizes the the `lazyCreateClosure`
+    ///
+    /// [Read this](https://nl.wikipedia.org/wiki/Memoization) for more information about memoization:
+    ///
+    /// - Notes: Memoization will be stored alongside the &key and the `self.base` of the Reactive instance.
+    ///
+    /// - Parameters:
+    ///   - key: The `UnsafeRawPointer` to store the memoized outcome in.
+    ///   - lazyCreateClosure: The closure which creates the object
+    /// - Returns: The object itself
+    public func _memoize<T>(key: UnsafeRawPointer, lazyCreateClosure: () -> Observable<T>) -> Observable<T> {
+        return _memoize(self.base, key: key, lazyCreateClosure: lazyCreateClosure)
+    }
+}
+
+fileprivate func _memoize<T>(_ object: Any, key: UnsafeRawPointer, lazyCreateClosure: () -> T) -> T {
+    objc_sync_enter(object); defer { objc_sync_exit(object) }
+    if let object = objc_getAssociatedObject(object, key) as? T {
         return object
     }
 
     let object = lazyCreateClosure()
-    objc_setAssociatedObject(obj, key, object, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    objc_setAssociatedObject(object, key, object, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     return object
 }
