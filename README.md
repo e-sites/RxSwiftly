@@ -10,6 +10,37 @@ Compatible with:
 - Xcode 9
 - Cocoapods 1.3
 
+## Installation
+### `Podfile`
+```ruby
+pod 'RxSwiftly/<Framework>/<Class>'
+```
+
+See [Collection](#collection) for an overview of all the frameworks and its subspecs
+
+```ruby
+target 'Project' do
+    pod 'RxSwift', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'swift4.0'
+    pod 'RxCocoa', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'swift4.0'
+
+    # RxSwiftly
+    pod 'RxSwiftly/UIKit/UIApplication'
+    pod 'RxSwiftly/CoreMotion/CMMotionManager'
+end
+
+post_install do |installer|
+    swift4_targets = [ "RxSwift", "RxCocoa", "RxSwiftly" ]
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            if swift4_targets.include? target.name
+                config.build_settings['SWIFT_VERSION'] = '4.0'
+            end
+        end
+    end
+end
+
+```
+
 ## Collection
 
 ### 🎨 UIKit
