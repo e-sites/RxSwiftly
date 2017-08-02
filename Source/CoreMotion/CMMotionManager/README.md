@@ -10,7 +10,7 @@ Compatible with:
 - Xcode 9
 - Cocoapods 1.3
 
-> ⚠️ Uses `memozation` internally. [Read more about memoization here](../../Core/Memoization.swift).
+> ⚠️ Uses `memoization` internally. [Read more about memoization here](../../Core/Memoization.swift).
 
 ## Usage
 
