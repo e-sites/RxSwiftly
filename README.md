@@ -67,3 +67,18 @@ Every class that inherits from `NSObject` automatically adds a lazy variable `di
 > _[Wikipedia](https://en.wikipedia.org/wiki/Memoization): In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again._
 
 [See source for more information](Source/Core/Memoization.swift)
+
+### Observable+pairwise
+> See [RxMarbles.com#pairwise](http://rxmarbles.com/#pairwise) for more information
+ 
+```swift
+User.current.rx.state
+    .pairwise()
+    .filter { $0.0 == .loggedIn && $0.1 == .loggedOut }
+    .subscribe { _ in
+        logger.warning("User logged out!")
+    }
+.addDisposableTo(disposeBag)
+```
+
+Improvement over the `Observable.zip(sequence.skip(1), sequence)`
