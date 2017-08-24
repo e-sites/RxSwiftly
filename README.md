@@ -68,8 +68,11 @@ Every class that inherits from `NSObject` automatically adds a lazy variable `di
 
 [See source for more information](Source/Core/Memoization.swift)
 
-### Observable+pairwise
-> See [RxMarbles.com#pairwise](http://rxmarbles.com/#pairwise) for more information
+### Observable.pairwise()
+> _Triggers on the second and subsequent triggerings of the input observable.    
+> The Nth triggering of the input observable passes the arguments from the N-1th and Nth triggering as a pair._
+
+See [RxMarbles.com#pairwise](http://rxmarbles.com/#pairwise) for more information
  
 ```swift
 User.current.rx.state

@@ -10,6 +10,12 @@ import RxSwift
 import RxCocoa
 
 extension Observable {
+    /// Triggers on the second and subsequent triggerings of the input observable.
+    /// The Nth triggering of the input observable passes the arguments from the N-1th and Nth triggering as a pair.
+    ///
+    /// - See: http://rxmarbles.com/#pairwise
+    ///
+    /// - Returns: `Observable`
     public func pairwise() -> Observable<(E, E)> {
         var previous: E? = nil
         return self
