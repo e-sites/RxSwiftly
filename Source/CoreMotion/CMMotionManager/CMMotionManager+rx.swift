@@ -32,13 +32,11 @@ extension Reactive where Base: CMMotionManager {
                 motionManager.deviceMotionUpdateInterval = 1.0 / 32.0 // 32 frames per second
 
                 motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: operationQueue) { motion, error in
-                    OperationQueue.main.addOperation {
-                        if let error = error {
-                            observer.onError(error)
+                    if let error = error {
+                        observer.onError(error)
 
-                        } else if let gravity = motion?.gravity {
-                            observer.on(.next(gravity))
-                        }
+                    } else if let gravity = motion?.gravity {
+                        observer.on(.next(gravity))
                     }
                 }
 
