@@ -28,7 +28,6 @@ extension Reactive where Base: CMMotionManager {
                 let motionManager = self.base
 
                 let operationQueue = OperationQueue()
-                operationQueue.qualityOfService = .utility
                 operationQueue.maxConcurrentOperationCount = 1
                 motionManager.deviceMotionUpdateInterval = 1.0 / 32.0 // 32 frames per second
 

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name           = "RxSwiftly"
   s.platform       = :ios
-  s.version        = "1.1"
+  s.version        = "1.1.1"
   s.ios.deployment_target = "9.0"
   s.summary        = "An E-sites collection of RxSwift extensions."
   s.author         = { "Bas van Kuijck" => "bas@e-sites.nl" }
