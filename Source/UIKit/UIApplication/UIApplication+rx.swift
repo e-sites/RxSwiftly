@@ -12,10 +12,17 @@ import RxCocoa
 import UIKit
 
 extension Reactive where Base: UIApplication {
-    public var delegate: DelegateProxy {
-        return RxApplicationDelegateProxy.proxyForObject(base)
+    public var delegate: DelegateProxy<UIApplication, UIApplicationDelegate> {
+        return RxApplicationDelegateProxy.proxy(for: base)
     }
-    
+
+    public func setDelegate(_ delegate: UIApplicationDelegate)
+        -> Disposable {
+            return RxApplicationDelegateProxy.installForwardDelegate(delegate,
+                                                                     retainDelegate: true,
+                                                                     onProxyForObject: self.base)
+    }
+
     /// Observable sequence of the application's state
     ///
     /// This gives you an observable sequence of all possible application states.
