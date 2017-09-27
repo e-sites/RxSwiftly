@@ -20,11 +20,10 @@ See [Collection](#collection) for an overview of all the frameworks and its subs
 
 ```ruby
 target 'Project' do
-    pod 'RxSwift', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'swift4.0'
-    pod 'RxCocoa', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'swift4.0'
+    pod 'RxSwift', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
+    pod 'RxCocoa', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
 
     # RxSwiftly
-    pod 'RxSwiftly/UIKit/UIApplication'
     pod 'RxSwiftly/CoreMotion/CMMotionManager'
 end
 
@@ -42,9 +41,6 @@ end
 ```
 
 ## Collection
-
-### 🎨 UIKit
-▫️ [UIApplication](Source/UIKit/UIApplication/)
 
 ### 🏇 CoreMotion
 ▫️ [CMMotionManager](Source/CoreMotion/CMMotionManager/)

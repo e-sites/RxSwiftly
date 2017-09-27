@@ -18,13 +18,6 @@ Pod::Spec.new do |s|
     ss.source_files = 'Source/Core/*.swift'
   end
 
-  s.subspec 'UIKit' do |ss|
-    ss.subspec 'UIApplication' do |sss|
-      sss.source_files   = "Source/UIKit/UIApplication/*.{h,swift}"
-    end
-    ss.dependency "#{s.name}/Core"
-  end
-
   s.subspec 'CoreMotion' do |ss|
     ss.frameworks    = 'CoreMotion'
     ss.subspec 'CMMotionManager' do |sss|
@@ -33,5 +26,5 @@ Pod::Spec.new do |s|
     ss.dependency "#{s.name}/Core"
   end
 
-  s.default_subspecs = 'Core', 'UIKit', 'CoreMotion'
+  s.default_subspecs = 'Core', 'CoreMotion'
 end
