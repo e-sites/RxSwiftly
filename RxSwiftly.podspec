@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name           = "RxSwiftly"
   s.platform       = :ios
-  s.version        = "1.1.2"
+  s.version        = "1.1.3"
   s.ios.deployment_target = "9.0"
   s.summary        = "An E-sites collection of RxSwift extensions."
   s.author         = { "Bas van Kuijck" => "bas@e-sites.nl" }
@@ -18,6 +18,13 @@ Pod::Spec.new do |s|
     ss.source_files = 'Source/Core/*.swift'
   end
 
+  s.subspec 'UIKit' do |ss|
+    ss.subspec 'UIApplication' do |sss|
+      sss.source_files   = "Source/UIKit/UIApplication/*.{h,swift}"
+    end
+    ss.dependency "#{s.name}/Core"
+  end
+
   s.subspec 'CoreMotion' do |ss|
     ss.frameworks    = 'CoreMotion'
     ss.subspec 'CMMotionManager' do |sss|
@@ -26,5 +33,5 @@ Pod::Spec.new do |s|
     ss.dependency "#{s.name}/Core"
   end
 
-  s.default_subspecs = 'Core', 'CoreMotion'
+  s.default_subspecs = 'Core', 'UIKit', 'CoreMotion'
 end
