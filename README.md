@@ -32,7 +32,8 @@ end
 ## Collection
 
 ### 🎨 UIKit
-▫️ [UIApplication](Source/UIKit/UIApplication/)
+▫️ [UIApplication](Source/UIKit/UIApplication/)    
+▫️ [UITextField](Source/UIKit/UITextField/) (Thanks to [lexrus](https://gist.github.com/lexrus))
 
 ### 🏇 CoreMotion
 ▫️ [CMMotionManager](Source/CoreMotion/CMMotionManager/)

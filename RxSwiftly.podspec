@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name           = "RxSwiftly"
   s.platform       = :ios
-  s.version        = "1.1.3"
+  s.version        = "1.2.0"
   s.ios.deployment_target = "9.0"
   s.summary        = "An E-sites collection of RxSwift extensions."
   s.author         = { "Bas van Kuijck" => "bas@e-sites.nl" }
@@ -21,6 +21,9 @@ Pod::Spec.new do |s|
   s.subspec 'UIKit' do |ss|
     ss.subspec 'UIApplication' do |sss|
       sss.source_files   = "Source/UIKit/UIApplication/*.{h,swift}"
+    end
+    ss.subspec 'UITextField' do |sss|
+      sss.source_files   = "Source/UIKit/UITextField/*.{h,swift}"
     end
     ss.dependency "#{s.name}/Core"
   end
