@@ -5,10 +5,10 @@
 
 Compatible with:
 
-- Swift 4
-- RxSwift 4.0
-- Xcode 9
-- Cocoapods 1.3
+- Swift 4.2
+- RxSwift 4.4.0
+- Xcode 10.1
+- Cocoapods 1.6.0
 
 ## Installation
 ### `Podfile`
@@ -20,11 +20,9 @@ See [Collection](#collection) for an overview of all the frameworks and its subs
 
 ```ruby
 target 'Project' do
-    pod 'RxSwift', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
-    pod 'RxCocoa', :git => 'git@github.com:ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
-
     # RxSwiftly
     pod 'RxSwiftly/UIKit/UIApplication'
+    pod 'RxSwiftly/UIKit/UITextField'
     pod 'RxSwiftly/CoreMotion/CMMotionManager'
 end
 ```
