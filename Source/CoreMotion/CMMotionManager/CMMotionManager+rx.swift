@@ -43,7 +43,7 @@ extension Reactive where Base: CMMotionManager {
                 return Disposables.create {
                     motionManager.stopAccelerometerUpdates()
                 }
-            }.shareReplayLatestWhileConnected()
+            }.share(replay: 1)
         }
     }
 }

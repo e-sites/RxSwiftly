@@ -32,7 +32,7 @@ extension Reactive where Base: UIApplication {
                 Notification.Name.UIApplicationDidFinishLaunching,
                 Notification.Name.UIApplicationWillResignActive,
                 Notification.Name.UIApplicationWillTerminate
-                ].flatMap {
+                ].compactMap {
                     NotificationCenter.default.rx.notification($0)
             }
 
