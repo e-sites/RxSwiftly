@@ -23,15 +23,15 @@ extension Reactive where Base: UIApplication {
     /// That's why we set use a NotificationCenter
     ///
     /// - Returns: Observable sequence of `UIApplicationState`s
-    public var applicationState: Observable<UIApplicationState> {
+    public var applicationState: Observable<UIApplication.State> {
         return memoize(key: &applicationStateKey) {
             let observables = [
-                Notification.Name.UIApplicationDidBecomeActive,
-                Notification.Name.UIApplicationDidEnterBackground,
-                Notification.Name.UIApplicationWillEnterForeground,
-                Notification.Name.UIApplicationDidFinishLaunching,
-                Notification.Name.UIApplicationWillResignActive,
-                Notification.Name.UIApplicationWillTerminate
+                UIApplication.didBecomeActiveNotification,
+                UIApplication.didEnterBackgroundNotification,
+                UIApplication.willEnterForegroundNotification,
+                UIApplication.didFinishLaunchingNotification,
+                UIApplication.willResignActiveNotification,
+                UIApplication.willTerminateNotification
                 ].compactMap {
                     NotificationCenter.default.rx.notification($0)
             }
