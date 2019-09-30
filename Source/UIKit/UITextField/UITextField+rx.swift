@@ -5,6 +5,8 @@
 //  Copyright © 2018 Krunoslav Zaher. All rights reserved.
 //
 
+import UIKit
+import Foundation
 import RxSwift
 import RxCocoa
 

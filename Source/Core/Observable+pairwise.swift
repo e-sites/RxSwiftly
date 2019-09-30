@@ -16,8 +16,8 @@ extension Observable {
     /// - See: http://rxmarbles.com/#pairwise
     ///
     /// - Returns: `Observable`
-    public func pairwise() -> Observable<(E, E)> {
-        var previous: E? = nil
+    public func pairwise() -> Observable<(Element, Element)> {
+        var previous: Element? = nil
         return self
             .filter { element in
                 if previous == nil {
@@ -26,7 +26,7 @@ extension Observable {
                 }
                 return true
             }
-            .map { (element: E) -> (E, E) in
+            .map { (element: Element) -> (Element, Element) in
                 defer { previous = element }
                 return (previous!, element)
             }

@@ -11,7 +11,7 @@ import RxCocoa
 
 fileprivate var nsObjectAssociatedKey: UInt8 = 0
 
-public extension NSObject {
+extension NSObject {
     public var disposeBag: DisposeBag {
         return memoize(key: &nsObjectAssociatedKey) {
             DisposeBag()

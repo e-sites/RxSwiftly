@@ -4,6 +4,9 @@
 //  Created by Lex Tang on 2/14/18.
 //  Copyright © 2018 Krunoslav Zaher. All rights reserved.
 //
+
+import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
